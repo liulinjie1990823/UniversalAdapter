@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <eat-comment/>
+    <item name="com_viewholderIndexID" type="id"/>
+    <item name="com_viewholderTagID" type="id"/>
+    <eat-comment/>
+</resources>
