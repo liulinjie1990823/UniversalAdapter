@@ -7,8 +7,10 @@ android {
     defaultConfig {
         minSdkVersion project.ANDROID_BUILD_MIN_SDK_VERSION as int
         targetSdkVersion project.ANDROID_BUILD_TARGET_SDK_VERSION as int
-        versionCode 1
-        versionName "1.0"
+        //app版本code
+        versionCode project.VERSION_CODE as int
+        //app版本号
+        versionName project.VERSION_NAME
 
     }
     buildTypes {
@@ -24,10 +26,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:recyclerview-v7:24.2.1'
-    compile 'com.android.support:support-annotations:24.2.1'
-    compile 'com.android.support:support-compat:24.2.1'
-    compile 'com.android.support:support-core-ui:24.2.1'
+    compile rootProject.ext.support.recyclerView_v7
 }
 
 apply from: "bintrayUpload.gradle"

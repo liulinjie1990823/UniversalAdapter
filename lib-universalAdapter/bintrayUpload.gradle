@@ -14,7 +14,6 @@ if (projectPropertiesFile.exists()) {
 }
 
 // read properties
-def projectUserOrg = properties.getProperty("project.userOrg")
 def projectRepo = properties.getProperty("project.repo")
 def projectName = properties.getProperty("project.name")
 def projectGroupId = properties.getProperty("project.groupId")
@@ -135,12 +134,12 @@ bintray {
     key = bintrayApikey
     configurations = ['archives']
     pkg {
-        userOrg = projectUserOrg
         repo = projectRepo
         name = projectArtifactId
         websiteUrl = projectSiteUrl
         vcsUrl = projectGitUrl
         licenses = ["Apache-2.0"]
         publish = true
+        version projectVersionName
     }
 }

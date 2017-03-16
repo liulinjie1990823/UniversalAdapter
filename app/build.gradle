@@ -6,10 +6,13 @@ android {
 
     defaultConfig {
         applicationId "com.llj.universaladapter"
+
         minSdkVersion project.ANDROID_BUILD_MIN_SDK_VERSION as int
         targetSdkVersion project.ANDROID_BUILD_TARGET_SDK_VERSION as int
-        versionCode 1
-        versionName "1.0"
+        //app版本code
+        versionCode project.VERSION_CODE as int
+        //app版本号
+        versionName project.VERSION_NAME
     }
     buildTypes {
         release {
