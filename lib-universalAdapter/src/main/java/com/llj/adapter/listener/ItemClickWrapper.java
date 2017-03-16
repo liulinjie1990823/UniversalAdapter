@@ -8,8 +8,8 @@ import com.llj.adapter.util.UniversalAdapterUtils;
 
 
 /**
- * @param <Item>
- * @param <Holder>
+ * @param <Item>   Item
+ * @param <Holder> Holder
  */
 public class ItemClickWrapper<Item, Holder extends ViewHolder> implements View.OnClickListener, View.OnLongClickListener {
 

@@ -37,6 +37,8 @@ public class RecyclerViewAdapterConverter<Item, Holder extends ViewHolder> exten
          * @param viewHolder The view holder of the clicked item.
          * @param parent     The recycler view which contained the clicked item.
          * @param position   The position in the adapter of the clicked item.
+         * @param x          x position
+         * @param y          y position
          */
         void onItemClick(Holder viewHolder, RecyclerView parent, int position, float x, float y);
     }
@@ -343,6 +345,8 @@ public class RecyclerViewAdapterConverter<Item, Holder extends ViewHolder> exten
          * @param viewHolder The view holder of the clicked item.
          * @param parent     The recycler view which contained the clicked item.
          * @param position   The position in the adapter of the clicked item.
+         * @param x          x position
+         * @param y          y position
          */
         public abstract void onItemClick(ViewHolder viewHolder, RecyclerView parent, int position, float x, float y);
 
@@ -354,6 +358,8 @@ public class RecyclerViewAdapterConverter<Item, Holder extends ViewHolder> exten
          * @param viewHolder The view holder of the clicked item.
          * @param parent     The recycler view which contained the clicked item.
          * @param position   The position in the adapter of the clicked item.
+         * @param x          x position
+         * @param y          y position
          */
         public abstract void onItemLongClick(ViewHolder viewHolder, RecyclerView parent, int position, float x, float y);
     }

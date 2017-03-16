@@ -23,7 +23,6 @@ public interface ObservableList<T> extends List<T> {
      * {@link #endTransaction()}.
      *
      * @throws IllegalStateException if a transaction is already running.
-     * @see ObservableListAdapter#endTransaction()
      */
     void beginTransaction();
 
@@ -32,7 +31,6 @@ public interface ObservableList<T> extends List<T> {
      * if any modifications have been made.
      *
      * @throws IllegalStateException if no transaction is currently running.
-     * @see ObservableListAdapter#beginTransaction()
      */
     void endTransaction();
 }

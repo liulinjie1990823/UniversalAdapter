@@ -246,9 +246,9 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
     /**
      * 这个方法
      *
-     * @param parent
-     * @param viewType
-     * @return
+     * @param parent   parent
+     * @param viewType viewType
+     * @return ViewHolder
      */
     public ViewHolder createViewHolder(ViewGroup parent, int viewType) {
         ViewHolder viewHolder;
@@ -333,7 +333,7 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
     /**
      * ListView使用
      *
-     * @return
+     * @return count
      */
     public int getInternalItemViewTypeCount() {
         return getItemViewTypeCount() + getFootersCount() + getHeadersCount();
@@ -345,8 +345,8 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
     /**
      * ListView的点击事件
      *
-     * @param position
-     * @param view
+     * @param position position
+     * @param view     view
      */
     public void onItemClicked(int position, View view) {
         ViewHolder holder = (ViewHolder) view.getTag(R.id.com_viewholderTagID);
@@ -356,8 +356,8 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
     /**
      * RecyclerView的点击事件
      *
-     * @param position
-     * @param holder
+     * @param position position
+     * @param holder   holder
      */
     public void onItemClicked(int position, ViewHolder holder) {
         if (internalIsEnabled(position)) {
@@ -397,8 +397,8 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
     /**
      * RecyclerView的点击事件
      *
-     * @param position
-     * @param holder
+     * @param position position
+     * @param holder   holder
      */
     public void onItemDoubleClicked(int position, ViewHolder holder) {
         if (internalIsEnabled(position)) {
@@ -422,8 +422,9 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
     /**
      * ListView的长按点击事件
      *
-     * @param position
-     * @param view
+     * @param position position
+     * @param view     view
+     * @return onItemLongClicked
      */
     @SuppressWarnings("unchecked")
     public boolean onItemLongClicked(int position, View view) {
@@ -434,8 +435,9 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
     /**
      * RecyclerView的长按点击事件
      *
-     * @param position
-     * @param holder
+     * @param position position
+     * @param holder   holder
+     * @return onItemLongClicked
      */
     public boolean onItemLongClicked(int position, ViewHolder holder) {
         if (internalIsEnabled(position)) {

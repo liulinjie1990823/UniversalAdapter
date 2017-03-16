@@ -92,7 +92,7 @@ public class ObservableListWrapper<T> implements ObservableList<T> {
     }
 
     /**
-     * Replaces any existing instances of the given item (as defined by {@link Object#equals()})
+     * Replaces any existing instances of the given item (as defined by)
      * or appends the item to the end of the list if not found.
      *
      * @param item       The item to add

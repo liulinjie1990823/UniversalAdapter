@@ -25,6 +25,7 @@ public class MappableSet<T> {
      * Adds the given item to the set.
      *
      * @param item The item to add.
+     * @param <E>  E
      */
     public <E extends T> void add(E item) {
         members.add(item);
@@ -34,6 +35,7 @@ public class MappableSet<T> {
      * Removes the given item from the set.
      *
      * @param item The item to remove.
+     * @param <E>  E
      * @return True if the item was removed, false if it wasn't found in the
      * set.
      */
@@ -52,6 +54,7 @@ public class MappableSet<T> {
      * Returns true if the given item is found in the set.
      *
      * @param item The item to look for.
+     * @param <E>  E
      * @return True if the item was found, false if it is not.
      */
     public <E extends T> boolean contains(E item) {
