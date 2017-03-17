@@ -24,5 +24,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':lib-universalAdapter')
+//    compile project(':lib-universalAdapter')
+    compile 'com.llj.adapter:lib-universalAdapter:1.0.0'
 }
