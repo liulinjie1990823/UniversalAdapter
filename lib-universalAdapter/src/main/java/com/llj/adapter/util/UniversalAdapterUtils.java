@@ -2,6 +2,8 @@ package com.llj.adapter.util;
 
 import android.view.View;
 
+import com.llj.adapter.R;
+
 /**
  * PROJECT:CommonAdapter
  * DESCRIBE:
@@ -9,13 +11,10 @@ import android.view.View;
  */
 
 public class UniversalAdapterUtils {
-    public static final int VIEW_HOLDER_TAG_ID = 10086;
-
-    public static final int VIEW_HOLDER_INDEX_ID = 10087;
 
     public static void setViewHolder(View view, Object holder) {
         if (view != null) {
-            view.setTag(VIEW_HOLDER_TAG_ID, holder);
+            view.setTag(R.id.com_viewholderTagID, holder);
         }
     }
 
@@ -24,10 +23,10 @@ public class UniversalAdapterUtils {
         if (view == null) {
             return null;
         }
-        return (Holder) view.getTag(VIEW_HOLDER_TAG_ID);
+        return (Holder) view.getTag(R.id.com_viewholderTagID);
     }
 
     public static int getIndex(View view) {
-        return (int) view.getTag(VIEW_HOLDER_INDEX_ID);
+        return (int) view.getTag(R.id.com_viewholderIndexID);
     }
 }
