@@ -205,7 +205,7 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
 
     public void addFooterHolder(int type, ViewHolder viewHolder) {
         tryThrowAlreadyBoundException("Cannot bind a footer holder post-bind due to limitations of view types and recycling.");
-        if (mFooterHolders.indexOfKey(type)  >=0) {
+        if (mFooterHolders.indexOfKey(type) >= 0) {
             throw new IllegalStateException("type exits");
         }
         mFooterHolders.put(type, viewHolder);
@@ -219,7 +219,7 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
      */
     public void addItemLayout(LayoutConfig layoutConfig) {
         tryThrowAlreadyBoundException("Cannot bind a header holder post-bind due to limitations of view types and recycling.");
-        if (mItemLayouts.indexOfKey(layoutConfig.type) >=0) {
+        if (mItemLayouts.indexOfKey(layoutConfig.type) >= 0) {
             throw new IllegalStateException("type exits");
         }
         mItemLayouts.put(layoutConfig.type, layoutConfig);
@@ -229,7 +229,7 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
         tryThrowAlreadyBoundException("Cannot bind a header holder post-bind due to limitations of view types and recycling.");
         LayoutConfig layoutConfig = new LayoutConfig(layoutId);
 
-        if (mItemLayouts.indexOfKey(layoutConfig.type)  >=0) {
+        if (mItemLayouts.indexOfKey(layoutConfig.type) >= 0) {
             throw new IllegalStateException("type exits");
         }
         mItemLayouts.put(layoutConfig.type, layoutConfig);
@@ -317,11 +317,13 @@ public abstract class UniversalAdapter<Item, Holder extends ViewHolder> implemen
 
 
     public int getInternalItemViewType(int position) {
-        int viewType = 0;
+        int viewType;
         if (position < getHeadersCount()) {
+            viewType = mHeaderHolders.keyAt(position);
         } else if (position > getFooterStartIndex()) {
+            viewType = mFooterHolders.keyAt(position);
         } else {
-            viewType = getItemViewType(position - getHeadersCount()) + getHeadersCount();
+            viewType = getItemViewType(position - getHeadersCount());
         }
         return viewType;
     }
