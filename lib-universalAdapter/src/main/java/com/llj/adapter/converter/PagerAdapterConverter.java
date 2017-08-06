@@ -37,12 +37,12 @@ public class PagerAdapterConverter<Item, Holder extends ViewHolder> extends Page
 
     PagerAdapterConverter(@NonNull UniversalAdapter<Item, Holder> universalAdapter, ViewPager viewPager) {
         universalAdapter.checkIfBoundAndSet();
+        mItemClickedWrapper = new ItemClickWrapper<>(this);
 
         setAdapter(universalAdapter);
         viewPager.setAdapter(this);
 
         superNotifyDataSetChanged();
-        mItemClickedWrapper = new ItemClickWrapper<>(this);
     }
 
 
