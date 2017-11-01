@@ -8,9 +8,9 @@ android {
         minSdkVersion project.ANDROID_BUILD_MIN_SDK_VERSION as int
         targetSdkVersion project.ANDROID_BUILD_TARGET_SDK_VERSION as int
         //app版本code
-        versionCode project.VERSION_CODE as int
+        versionCode 3
         //app版本号
-        versionName project.VERSION_NAME
+        versionName '1.0.2'
 
     }
     buildTypes {

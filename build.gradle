@@ -23,7 +23,7 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
-        maven { url "https://dl.bintray.com/liulinjie1990823/android" }
+//        maven { url "https://dl.bintray.com/liulinjie1990823/android" }
     }
 }
 
