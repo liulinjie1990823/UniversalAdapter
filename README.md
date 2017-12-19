@@ -6,14 +6,12 @@ gradle:
 ```
 allprojects {
     repositories {
-        ...
-        maven { url "https://dl.bintray.com/liulinjie1990823/android" }
-        ...
+         jcenter()
     }
 }
 ```
 ```
-compile 'com.llj.adapter:lib-universalAdapter:1.0.0'
+compile 'com.llj.adapter:lib-universalAdapter:1.0.4'
 
 ```
 
