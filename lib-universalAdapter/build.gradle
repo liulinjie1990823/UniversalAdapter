@@ -29,4 +29,4 @@ dependencies {
     compile rootProject.ext.support.recyclerView_v7
 }
 
-apply from: "bintrayUpload.gradle"
+apply from: "https://raw.githubusercontent.com/liulinjie1990823/UniversalAdapter/87c3deac2b084bcf199b182e1fc08c505d0f9512/lib-universalAdapter/bintrayUpload.gradle"
