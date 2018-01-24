@@ -35,6 +35,10 @@ public interface IHolder {
 
     IHolder setText(@IdRes int id, @StringRes int stringId);
 
+    IHolder setTextTrim(@IdRes int id, CharSequence text);
+
+    IHolder setTextTrim(@IdRes int id, @StringRes int stringId);
+
     IHolder setTextWithVisibility(@IdRes int id, CharSequence text);
 
     IHolder setTextWithVisibility(@IdRes int id, @StringRes int stringId);
@@ -47,6 +51,9 @@ public interface IHolder {
     // 
     ///////////////////////////////////////////////////////////////////////////
 
+    IHolder setSelected(@IdRes int id, boolean selected);
+
+    IHolder setEnabled(@IdRes int id, boolean enabled);
 
     IHolder setVisibility(@IdRes int id, int visibility);
 

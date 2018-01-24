@@ -11,7 +11,7 @@ allprojects {
 }
 ```
 ```
-compile 'com.llj.adapter:lib-universalAdapter:1.0.4'
+compile 'com.llj.adapter:lib-universalAdapter:1.0.5'
 
 ```
 

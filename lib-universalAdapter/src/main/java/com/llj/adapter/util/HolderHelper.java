@@ -10,6 +10,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -80,16 +81,37 @@ public class HolderHelper implements IHolder {
     public IHolder setText(@IdRes int id, CharSequence text) {
         TextView targetTxt = getView(id);
         if (targetTxt != null)
-            targetTxt.setText(text);
+            targetTxt.setText(emptyIfNull(text));
         return this;
     }
+
 
     @Override
     public IHolder setText(@IdRes int id, @StringRes int stringId) {
         TextView targetTxt = getView(id);
         if (targetTxt != null)
-            targetTxt.setText(getContext().getString(stringId));
+            targetTxt.setText(emptyIfNull(getContext().getString(stringId)));
         return this;
+    }
+
+    @Override
+    public IHolder setTextTrim(int id, int stringId) {
+        TextView targetTxt = getView(id);
+        if (targetTxt != null)
+            targetTxt.setText(emptyIfNull(getContext().getString(stringId).trim()));
+        return this;
+    }
+
+    @Override
+    public IHolder setTextTrim(int id, CharSequence text) {
+        TextView targetTxt = getView(id);
+        if (targetTxt != null)
+            targetTxt.setText(emptyIfNull(text).toString().trim());
+        return this;
+    }
+
+    private CharSequence emptyIfNull(@Nullable CharSequence str) {
+        return str == null ? "" : str;
     }
 
     @Override
@@ -127,6 +149,20 @@ public class HolderHelper implements IHolder {
     public IHolder setTextColorRes(@IdRes int id, @ColorRes int textColor) {
         TextView targetTxt = getView(id);
         targetTxt.setTextColor(ContextCompat.getColor(getContext(), textColor));
+        return this;
+    }
+
+    @Override
+    public IHolder setSelected(int id, boolean selected) {
+        View targetTxt = getView(id);
+        targetTxt.setSelected(selected);
+        return this;
+    }
+
+    @Override
+    public IHolder setEnabled(int id, boolean enabled) {
+        View targetTxt = getView(id);
+        targetTxt.setEnabled(enabled);
         return this;
     }
 

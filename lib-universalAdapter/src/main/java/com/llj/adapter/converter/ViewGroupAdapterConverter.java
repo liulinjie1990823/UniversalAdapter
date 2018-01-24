@@ -1,6 +1,8 @@
 package com.llj.adapter.converter;
 
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +22,8 @@ import com.llj.adapter.observable.ListObserver;
 import com.llj.adapter.observable.ListObserverListener;
 import com.llj.adapter.observable.SimpleListObserverListener;
 import com.llj.adapter.util.UniversalAdapterUtils;
+
+import java.lang.reflect.Field;
 
 /**
  * PROJECT:CommonAdapter
@@ -135,9 +139,71 @@ public class ViewGroupAdapterConverter<Item, Holder extends ViewHolder> implemen
 
         View view = holder.itemView;
         UniversalAdapterUtils.setViewHolder(view, holder);
-        itemClickWrapper.register(view);
+
+        if (!hasOnClickListeners(view)) {
+            itemClickWrapper.register(view);
+        }
 
         getViewGroup().addView(view, position);
+    }
+
+    public boolean hasOnClickListeners(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+            return getOnClickListenerV14(view) != null;
+        } else {
+            return getOnClickListenerV(view) != null;
+        }
+    }
+
+    //Used for APIs lower than ICS (API 14)
+    private View.OnClickListener getOnClickListenerV(View view) {
+        View.OnClickListener retrievedListener = null;
+        String viewStr = "android.view.View";
+        Field field;
+
+        try {
+            field = Class.forName(viewStr).getDeclaredField("mOnClickListener");
+            retrievedListener = (View.OnClickListener) field.get(view);
+        } catch (NoSuchFieldException ex) {
+            Log.e("Reflection", "No Such Field.");
+        } catch (IllegalAccessException ex) {
+            Log.e("Reflection", "Illegal Access.");
+        } catch (ClassNotFoundException ex) {
+            Log.e("Reflection", "Class Not Found.");
+        }
+
+        return retrievedListener;
+    }
+
+    //Used for new ListenerInfo class structure used beginning with API 14 (ICS)
+    private View.OnClickListener getOnClickListenerV14(View view) {
+        View.OnClickListener retrievedListener = null;
+        String viewStr = "android.view.View";
+        String lInfoStr = "android.view.View$ListenerInfo";
+
+        try {
+            Field listenerField = Class.forName(viewStr).getDeclaredField("mListenerInfo");
+            Object listenerInfo = null;
+
+            if (listenerField != null) {
+                listenerField.setAccessible(true);
+                listenerInfo = listenerField.get(view);
+            }
+
+            Field clickListenerField = Class.forName(lInfoStr).getDeclaredField("mOnClickListener");
+
+            if (clickListenerField != null && listenerInfo != null) {
+                retrievedListener = (View.OnClickListener) clickListenerField.get(listenerInfo);
+            }
+        } catch (NoSuchFieldException ex) {
+            Log.e("Reflection", "No Such Field.");
+        } catch (IllegalAccessException ex) {
+            Log.e("Reflection", "Illegal Access.");
+        } catch (ClassNotFoundException ex) {
+            Log.e("Reflection", "Class Not Found.");
+        }
+
+        return retrievedListener;
     }
 
     private ListObserverListener<Item> listChangeListener = new SimpleListObserverListener<Item>() {
