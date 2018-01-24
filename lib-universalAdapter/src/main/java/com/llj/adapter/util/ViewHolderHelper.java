@@ -76,6 +76,16 @@ public class ViewHolderHelper extends ViewHolder implements IHolder {
     }
 
     @Override
+    public IHolder setTextTrim(@IdRes int id, CharSequence text) {
+        return mHolderHelper.setTextTrim(id, text);
+    }
+
+    @Override
+    public IHolder setTextTrim(@IdRes int id, @StringRes int stringId) {
+        return mHolderHelper.setTextTrim(id, stringId);
+    }
+
+    @Override
     public IHolder setTextWithVisibility(@IdRes int id, CharSequence text) {
         return mHolderHelper.setTextWithVisibility(id, text);
     }
@@ -93,6 +103,16 @@ public class ViewHolderHelper extends ViewHolder implements IHolder {
     @Override
     public IHolder setTextColorRes(@IdRes int id, @ColorRes int textColor) {
         return mHolderHelper.setTextColorRes(id, textColor);
+    }
+
+    @Override
+    public IHolder setSelected(@IdRes int id, boolean selected) {
+        return mHolderHelper.setSelected(id, selected);
+    }
+
+    @Override
+    public IHolder setEnabled(@IdRes int id, boolean enabled) {
+        return mHolderHelper.setEnabled(id, enabled);
     }
 
     @Override

@@ -95,7 +95,7 @@ public class HolderHelper implements IHolder {
     }
 
     @Override
-    public IHolder setTextTrim(int id, int stringId) {
+    public IHolder setTextTrim(@IdRes int id,  @StringRes int stringId) {
         TextView targetTxt = getView(id);
         if (targetTxt != null)
             targetTxt.setText(emptyIfNull(getContext().getString(stringId).trim()));
@@ -103,7 +103,7 @@ public class HolderHelper implements IHolder {
     }
 
     @Override
-    public IHolder setTextTrim(int id, CharSequence text) {
+    public IHolder setTextTrim(@IdRes int id, CharSequence text) {
         TextView targetTxt = getView(id);
         if (targetTxt != null)
             targetTxt.setText(emptyIfNull(text).toString().trim());
@@ -153,14 +153,14 @@ public class HolderHelper implements IHolder {
     }
 
     @Override
-    public IHolder setSelected(int id, boolean selected) {
+    public IHolder setSelected(@IdRes int id, boolean selected) {
         View targetTxt = getView(id);
         targetTxt.setSelected(selected);
         return this;
     }
 
     @Override
-    public IHolder setEnabled(int id, boolean enabled) {
+    public IHolder setEnabled(@IdRes int id, boolean enabled) {
         View targetTxt = getView(id);
         targetTxt.setEnabled(enabled);
         return this;
