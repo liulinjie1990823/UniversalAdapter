@@ -95,7 +95,7 @@ public class HolderHelper implements IHolder {
     }
 
     @Override
-    public IHolder setTextTrim(@IdRes int id,  @StringRes int stringId) {
+    public IHolder setTextTrim(@IdRes int id, @StringRes int stringId) {
         TextView targetTxt = getView(id);
         if (targetTxt != null)
             targetTxt.setText(emptyIfNull(getContext().getString(stringId).trim()));
@@ -238,16 +238,19 @@ public class HolderHelper implements IHolder {
 
     @Override
     public IHolder setOnItemClickListener(View.OnClickListener listener) {
+        itemView.setOnClickListener(listener);
         return this;
     }
 
     @Override
     public IHolder setOnClickListener(@IdRes int id, View.OnClickListener onClickListener) {
+        getView(id).setOnClickListener(onClickListener);
         return this;
     }
 
     @Override
     public IHolder setOnLongClickListener(@IdRes int id, View.OnLongClickListener onLongClickListener) {
+        getView(id).setOnLongClickListener(onLongClickListener);
         return null;
     }
 

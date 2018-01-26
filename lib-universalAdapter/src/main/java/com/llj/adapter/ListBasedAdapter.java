@@ -22,6 +22,7 @@ import java.util.ListIterator;
 public abstract class ListBasedAdapter<Item, Holder extends ViewHolder> extends UniversalAdapter<Item, Holder> implements ObservableList<Item> {
 
     private List<Item> mList;
+    private int        mClickPosition;
 
     public ListBasedAdapter() {
         this(null);
@@ -33,6 +34,21 @@ public abstract class ListBasedAdapter<Item, Holder extends ViewHolder> extends 
 
     public ListBasedAdapter(ObservableListWrapper<Item> list) {
         setItemsList(list);
+    }
+
+
+    public int getClickPosition() {
+        return mClickPosition;
+    }
+
+    public void setClickPosition(int clickPosition) {
+        mClickPosition = clickPosition;
+    }
+
+    public Item getClickItem() {
+        if (size() > mClickPosition)
+            return get(mClickPosition);
+        return null;
     }
 
     protected void setItemsList(ObservableList<Item> list) {
